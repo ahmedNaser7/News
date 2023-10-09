@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="red">#CF1414</color>
+    <color name="blue">#142DCF</color>
+    <color name="babyBlue">#146ECF</color>
+    <color name="bink">#AF219A</color>
+    <color name="gold">#CF7514</color>
+    <color name="yellow">#A5A20A</color>
+    <color name="green">#2AA82F</color>
+    <color name="greenDark">#146317</color>
+</resources>
