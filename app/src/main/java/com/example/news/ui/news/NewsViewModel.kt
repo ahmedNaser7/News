@@ -21,8 +21,6 @@ class NewsViewModel : ViewModel() {
     val newsLiveData = MutableLiveData<List<News?>?>()
     val errorLiveData = MutableLiveData<ViewError>()
 
-    //search
-    val newsSearchLiveData = MutableLiveData<List<News?>?>()
 
     fun getNewsSources(categoryDataClass: CategoryDataClass) {
 
@@ -112,53 +110,6 @@ class NewsViewModel : ViewModel() {
             })
     }
 
-    fun getSearchNews(sourceId: String?, pageSize: Int?, page: Int?, search: String) {
-
-
-        shouldShowLoading.postValue(true)
-        ApiManager
-            .getApis()
-            .getNews(
-                sources = sourceId ?: "",
-                pageSize = pageSize ?: 0,
-                page = page ?: 0,
-                search = search
-            )
-            .enqueue(object : Callback<NewsResponse> {
-                override fun onFailure(call: Call<NewsResponse>, t: Throwable) {
-                    shouldShowLoading.postValue(false)
-                    errorLiveData.postValue(
-                        ViewError(throwable = t) {
-                            getSearchNews(sourceId, pageSize, page, search)
-                        }
-                    )
-                }
-
-                override fun onResponse(
-                    call: Call<NewsResponse>,
-                    response: Response<NewsResponse>
-                ) {
-                    shouldShowLoading.postValue(false)
-                    if (response.isSuccessful) {
-                        // adapter
-
-                        newsSearchLiveData.postValue(response.body()?.articles)
-                        //  adapter.bindNews(response.body()?.articles)
-
-                        return
-                    }
-                    val errorBodyJsonString = response.errorBody()?.string()
-                    val errorResponse =
-                        Gson().fromJson(errorBodyJsonString, NewsResponse::class.java)
-                    errorLiveData.postValue(
-                        ViewError(errorResponse.message) {
-                            getSearchNews(sourceId, pageSize, page, search)
-                        }
-                    )
-                }
-
-            })
-    }
 
 
 }

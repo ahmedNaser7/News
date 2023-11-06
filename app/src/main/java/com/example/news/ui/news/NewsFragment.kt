@@ -2,12 +2,10 @@ package com.example.news.ui.news
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -79,9 +77,7 @@ class NewsFragment : Fragment() {
         viewModel.errorLiveData.observe(viewLifecycleOwner) {
             handleError(it)
         }
-        viewModel.newsSearchLiveData.observe(viewLifecycleOwner) {
-            adapter.bindNews(it)
-        }
+
     }
 
     private fun getNews() {
@@ -116,28 +112,6 @@ class NewsFragment : Fragment() {
             }
 
         }
-        //search
-        val search = viewBinding.searchView
-        search.clearFocus()
-        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
-            androidx.appcompat.widget.SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                viewModel.getSearchNews(
-                    sourceObj.id,
-                    pageSize = pageSize,
-                    page = curpage,
-                    query ?: ""
-                )
-                Log.e("com.example.news", "not working", Throwable())
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-
-                return false
-            }
-
-        })
     }
 
 
