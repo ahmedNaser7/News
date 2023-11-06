@@ -9,8 +9,6 @@ import android.widget.LinearLayout
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.news.ViewError
 import com.example.news.api.model.newsResponse.News
 import com.example.news.api.model.sourcesResponse.Source
@@ -27,8 +25,6 @@ class NewsFragment : Fragment() {
     lateinit var viewModel: NewsViewModel
     lateinit var sourceObj: Source
     var isLoading = false
-    var pageSize = 20
-    var curpage = 1
     lateinit var category: CategoryDataClass
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -81,7 +77,7 @@ class NewsFragment : Fragment() {
     }
 
     private fun getNews() {
-        viewModel.getNews(sourceObj.id, pageSize = pageSize, page = curpage)
+        viewModel.getNews(sourceObj.id)
         isLoading = false
     }
 
@@ -90,20 +86,6 @@ class NewsFragment : Fragment() {
         viewBinding.vm = viewModel
         viewBinding.lifecycleOwner = this // connect fragment lifeCycle to xml bec we use liveData
         viewBinding.recyclerView.adapter = adapter
-        viewBinding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                val layoutManager = recyclerView.layoutManager as LinearLayoutManager
-                val lastVisiableItemCount = layoutManager.findLastVisibleItemPosition()
-                val totalItemCount = layoutManager.itemCount
-                val visiableThreshold = 3
-                if (!isLoading && totalItemCount - lastVisiableItemCount >= visiableThreshold) {
-                    isLoading = true
-                    curpage++
-                    getNews()
-                }
-            }
-        })
         adapter.onItemClickListener = object : NewsAdapter.OnItemClickListener {
             override fun onCLickItem(news: News?) {
                 val intent = Intent(requireContext(), NewsDetailsActivity::class.java)
@@ -133,7 +115,7 @@ class NewsFragment : Fragment() {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
                     val source = tab?.tag as Source
                     sourceObj = source
-                    viewModel.getNews(source.id, pageSize = pageSize, page = curpage)
+                    viewModel.getNews(source.id)
                 }
 
                 override fun onTabUnselected(tab: TabLayout.Tab?) {
@@ -143,7 +125,7 @@ class NewsFragment : Fragment() {
                 override fun onTabReselected(tab: TabLayout.Tab?) {
                     val source = tab?.tag as Source
                     sourceObj = source
-                    viewModel.getNews(source.id, pageSize = pageSize, page = curpage)
+                    viewModel.getNews(source.id)
                 }
 
             }
