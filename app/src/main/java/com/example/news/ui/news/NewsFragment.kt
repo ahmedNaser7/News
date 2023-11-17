@@ -9,16 +9,18 @@ import android.widget.LinearLayout
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.news.ViewError
-import com.example.news.api.model.newsResponse.News
-import com.example.news.api.model.sourcesResponse.Source
+import com.example.news.data.api.model.newsResponse.News
+import com.example.news.data.api.model.sourcesResponse.Source
 import com.example.news.databinding.FragmentNewsBinding
-import com.example.news.showMessage
+import com.example.news.ui.ViewError
 import com.example.news.ui.category.CategoryDataClass
 import com.example.news.ui.newsDetails.NewsDetailsActivity
+import com.example.news.ui.showMessage
 import com.google.android.material.tabs.TabLayout
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class NewsFragment : Fragment() {
 
     lateinit var viewBinding: FragmentNewsBinding
@@ -81,7 +83,9 @@ class NewsFragment : Fragment() {
         isLoading = false
     }
 
-    val adapter = NewsAdapter()
+
+    @Inject
+    lateinit var adapter: NewsAdapter
     private fun initViews() {
         viewBinding.vm = viewModel
         viewBinding.lifecycleOwner = this // connect fragment lifeCycle to xml bec we use liveData

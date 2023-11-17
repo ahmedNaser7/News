@@ -1,4 +1,4 @@
-package com.example.news
+package com.example.news.ui
 
 import android.app.AlertDialog
 import android.content.DialogInterface

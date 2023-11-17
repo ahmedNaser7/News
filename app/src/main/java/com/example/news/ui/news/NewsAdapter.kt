@@ -3,7 +3,7 @@ package com.example.news.ui.news
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.news.api.model.newsResponse.News
+import com.example.news.data.api.model.newsResponse.News
 import com.example.news.databinding.ItemNewsBinding
 
 class NewsAdapter(var newsList: List<News?>? = null) :

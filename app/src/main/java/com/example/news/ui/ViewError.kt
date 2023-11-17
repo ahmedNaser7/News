@@ -1,4 +1,4 @@
-package com.example.news
+package com.example.news.ui
 
 data class ViewError(
     val message: String? = null,

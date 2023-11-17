@@ -1,4 +1,4 @@
-package com.example.news
+package com.example.news.ui
 
 import android.content.Intent
 import android.net.Uri
@@ -8,6 +8,7 @@ import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.example.news.R
 
 @BindingAdapter("app:url")
 fun bindImageWithUrl(

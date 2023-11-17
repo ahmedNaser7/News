@@ -1,4 +1,4 @@
-package com.example.news.api.model.newsResponse
+package com.example.news.data.api.model.newsResponse
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

@@ -9,7 +9,9 @@ import com.example.news.ui.category.CategoryDataClass
 import com.example.news.ui.category.CategoryFragment
 import com.example.news.ui.news.NewsFragment
 import com.example.news.ui.setting.SettingFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeActivity : AppCompatActivity(), CategoryFragment.OnCategoryClickListener {
     lateinit var viewBinding: ActivityHomeBinding
     var categoryFragment = CategoryFragment()
