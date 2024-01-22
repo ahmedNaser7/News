@@ -17,4 +17,5 @@ interface WebServices {
         @Query("apiKey") key: String = ApiConstants.apiKey,// Required parameters
         @Query("sources") sources: String,
     ): NewsResponse // return response of api
+
 }

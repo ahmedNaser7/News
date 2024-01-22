@@ -19,7 +19,7 @@
             android:name=".ui.newsDetails.NewsDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.home.HomeActivity"
+            android:name=".ui.news.home.HomeActivity"
             android:exported="false" />
         <activity
             android:name=".ui.splash.SplashActivity"

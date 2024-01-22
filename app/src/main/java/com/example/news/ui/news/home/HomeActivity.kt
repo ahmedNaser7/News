@@ -1,4 +1,4 @@
-package com.example.news.ui.home
+package com.example.news.ui.news.home
 
 import android.os.Bundle
 import androidx.appcompat.app.ActionBarDrawerToggle

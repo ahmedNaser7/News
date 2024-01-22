@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.example.news.databinding.ActivitySplashBinding
-import com.example.news.ui.home.HomeActivity
+import com.example.news.ui.news.home.HomeActivity
 
 class SplashActivity : AppCompatActivity() {
     lateinit var viewBinding: ActivitySplashBinding
