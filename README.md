@@ -4,7 +4,7 @@ Welcome to the News Application! This application provides the latest news from 
 
 ## ScreenShots
 
-<img src="Screenshots.png" alt="Screenshot">
+<img src="Screenshot.png" alt="Screenshot">
 
 ## Features
 
