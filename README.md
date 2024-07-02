@@ -32,4 +32,4 @@ Welcome to the News Application! This application provides the latest news from 
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/news-application.git
+   https://github.com/ahmedNaser7/News.git
